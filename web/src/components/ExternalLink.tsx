@@ -8,15 +8,9 @@ interface ExternalLinkProps {
 
 export const ExternalLink: FC<ExternalLinkProps> = ({
   children,
-  className,
   href,
 }: ExternalLinkProps) => (
-  <a
-    className={className}
-    href={href}
-    rel='noopener noreferrer'
-    target='_blank'
-  >
+  <a href={href} rel='noopener noreferrer' target='_blank'>
     {children}
   </a>
 )

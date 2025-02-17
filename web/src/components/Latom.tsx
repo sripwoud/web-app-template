@@ -10,12 +10,12 @@ export const Latom = () => {
       </button>
     ),
     (value) => (
-      <>
-        <span>{value}</span>
+      <div className='flex items-center gap-2'>
         <button type='button' onClick={reset}>
           Reset
         </button>
-      </>
+        <span>{value}</span>
+      </div>
     ),
   )
 }

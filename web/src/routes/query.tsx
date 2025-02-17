@@ -16,11 +16,8 @@ export const Route = createFileRoute('/query')({
 function component() {
   const users: UserProps[] = Route.useLoaderData()
   return (
-    <div>
-      Hello "/users"!
-      <ul>
-        {users.map((user) => <li key={user.id}>{user.name}</li>)}
-      </ul>
-    </div>
+    <ul className='list-disc list-inside'>
+      {users.map((user) => <li key={user.id}>{user.name}</li>)}
+    </ul>
   )
 }

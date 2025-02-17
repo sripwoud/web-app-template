@@ -5,15 +5,9 @@ import { Header } from 'c/Header'
 
 export function Layout() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-      }}
-    >
+    <div className='flex flex-col min-h-screen px-4 pt-4'>
       <Header />
-      <main style={{ flexGrow: 1 }}>
+      <main className='flex-1 overflow-hidden pt-4'>
         <Outlet />
       </main>
       <ReactQueryDevtools />

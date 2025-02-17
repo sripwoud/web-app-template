@@ -1,8 +1,7 @@
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { ReactQueryDevtools, TanStackRouterDevtools } from 'c/DevTools'
+import { Footer } from 'c/Footer'
 import { Header } from 'c/Header'
-import { Footer } from './Footer'
 
 export function Layout() {
   return (

@@ -3,7 +3,7 @@ import type { UserProps } from 'c/User'
 import { query } from 'l/query'
 import { BarLoader as pendingComponent } from 'react-spinners'
 
-export const Route = createFileRoute('/users')({
+export const Route = createFileRoute('/query')({
   component,
   loader: async () =>
     query.fetchQuery({

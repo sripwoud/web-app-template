@@ -13,31 +13,31 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as UsersImport } from './routes/users'
-import { Route as StateImport } from './routes/state'
+import { Route as QueryImport } from './routes/query'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
+const StateLazyImport = createFileRoute('/state')()
+const FormLazyImport = createFileRoute('/form')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const AboutLazyRoute = AboutLazyImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
-
-const UsersRoute = UsersImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const StateRoute = StateImport.update({
+const StateLazyRoute = StateLazyImport.update({
   id: '/state',
   path: '/state',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/state.lazy').then((d) => d.Route))
+
+const FormLazyRoute = FormLazyImport.update({
+  id: '/form',
+  path: '/form',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/form.lazy').then((d) => d.Route))
+
+const QueryRoute = QueryImport.update({
+  id: '/query',
+  path: '/query',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -58,25 +58,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/query': {
+      id: '/query'
+      path: '/query'
+      fullPath: '/query'
+      preLoaderRoute: typeof QueryImport
+      parentRoute: typeof rootRoute
+    }
+    '/form': {
+      id: '/form'
+      path: '/form'
+      fullPath: '/form'
+      preLoaderRoute: typeof FormLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/state': {
       id: '/state'
       path: '/state'
       fullPath: '/state'
-      preLoaderRoute: typeof StateImport
-      parentRoute: typeof rootRoute
-    }
-    '/users': {
-      id: '/users'
-      path: '/users'
-      fullPath: '/users'
-      preLoaderRoute: typeof UsersImport
-      parentRoute: typeof rootRoute
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+      preLoaderRoute: typeof StateLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -86,47 +86,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/state': typeof StateRoute
-  '/users': typeof UsersRoute
-  '/about': typeof AboutLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/state': typeof StateRoute
-  '/users': typeof UsersRoute
-  '/about': typeof AboutLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/state': typeof StateRoute
-  '/users': typeof UsersRoute
-  '/about': typeof AboutLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/state' | '/users' | '/about'
+  fullPaths: '/' | '/query' | '/form' | '/state'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/state' | '/users' | '/about'
-  id: '__root__' | '/' | '/state' | '/users' | '/about'
+  to: '/' | '/query' | '/form' | '/state'
+  id: '__root__' | '/' | '/query' | '/form' | '/state'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  StateRoute: typeof StateRoute
-  UsersRoute: typeof UsersRoute
-  AboutLazyRoute: typeof AboutLazyRoute
+  QueryRoute: typeof QueryRoute
+  FormLazyRoute: typeof FormLazyRoute
+  StateLazyRoute: typeof StateLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  StateRoute: StateRoute,
-  UsersRoute: UsersRoute,
-  AboutLazyRoute: AboutLazyRoute,
+  QueryRoute: QueryRoute,
+  FormLazyRoute: FormLazyRoute,
+  StateLazyRoute: StateLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -140,22 +140,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/state",
-        "/users",
-        "/about"
+        "/query",
+        "/form",
+        "/state"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
+    "/query": {
+      "filePath": "query.tsx"
+    },
+    "/form": {
+      "filePath": "form.lazy.tsx"
+    },
     "/state": {
-      "filePath": "state.tsx"
-    },
-    "/users": {
-      "filePath": "users.tsx"
-    },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+      "filePath": "state.lazy.tsx"
     }
   }
 }

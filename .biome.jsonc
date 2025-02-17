@@ -14,10 +14,14 @@
     "enabled": true,
     "ignore": ["dist", "web/src/routeTree.gen.ts"],
     "rules": {
-      "recommended": true,
       "complexity": {
         "useLiteralKeys": "off",
       },
+      "correctness": {
+        // @tanstack/form form fields use children prop
+        "noChildrenProp": "off",
+      },
+      "recommended": true,
     },
   },
   // organize imports with dprint

@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as UsersImport } from './routes/users'
+import { Route as StateImport } from './routes/state'
 
 // Create Virtual Routes
 
@@ -34,6 +35,12 @@ const UsersRoute = UsersImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const StateRoute = StateImport.update({
+  id: '/state',
+  path: '/state',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
@@ -49,6 +56,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/state': {
+      id: '/state'
+      path: '/state'
+      fullPath: '/state'
+      preLoaderRoute: typeof StateImport
       parentRoute: typeof rootRoute
     }
     '/users': {
@@ -72,12 +86,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/state': typeof StateRoute
   '/users': typeof UsersRoute
   '/about': typeof AboutLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/state': typeof StateRoute
   '/users': typeof UsersRoute
   '/about': typeof AboutLazyRoute
 }
@@ -85,27 +101,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/state': typeof StateRoute
   '/users': typeof UsersRoute
   '/about': typeof AboutLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/users' | '/about'
+  fullPaths: '/' | '/state' | '/users' | '/about'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/users' | '/about'
-  id: '__root__' | '/' | '/users' | '/about'
+  to: '/' | '/state' | '/users' | '/about'
+  id: '__root__' | '/' | '/state' | '/users' | '/about'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  StateRoute: typeof StateRoute
   UsersRoute: typeof UsersRoute
   AboutLazyRoute: typeof AboutLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  StateRoute: StateRoute,
   UsersRoute: UsersRoute,
   AboutLazyRoute: AboutLazyRoute,
 }
@@ -121,12 +140,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/state",
         "/users",
         "/about"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/state": {
+      "filePath": "state.tsx"
     },
     "/users": {
       "filePath": "users.tsx"

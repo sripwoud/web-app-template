@@ -10,10 +10,6 @@
       "allowTrailingCommas": true,
     },
   },
-  // organize imports with dprint
-  "organizeImports": {
-    "enabled": false,
-  },
   "linter": {
     "enabled": true,
     "ignore": ["dist"],
@@ -23,5 +19,14 @@
         "useLiteralKeys": "off",
       },
     },
+  },
+  // organize imports with dprint
+  "organizeImports": {
+    "enabled": false,
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
   },
 }

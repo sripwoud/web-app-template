@@ -2,7 +2,7 @@
 alias = "b"
 description = "Build the project"
 dir = "web"
-run = ["tsc -b", "bun vite build"]
+run = ["bun tsc -b", "bun vite build"]
 quiet = true
 
 [tasks.dev]

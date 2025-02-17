@@ -23,5 +23,5 @@ jobs:
             -n format,lint,typecheck,build \
             'bun dprint check' \
             'bun biome check --config-path=.biome.jsonc .' \
-            'bun tsc' \
+            'cd web &&bun tsc --p tsconfig.app.json --noEmit' \
             'cd web && bun vite build'

@@ -6,5 +6,10 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 const plugins = [tsconfigPaths(), TanStackRouterVite(), react()]
 
 export default defineConfig(({ mode }) => {
-  return { plugins, server: { open: mode === 'development' } }
+  return {
+    // https://vite.dev/guide/static-deploy#github-pages
+    base: '/web-app-template/',
+    plugins,
+    server: { open: mode === 'development' },
+  }
 })

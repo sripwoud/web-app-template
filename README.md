@@ -1,5 +1,5 @@
-| <img alt='ts icon' width='50' src='https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg'/> | TEMPLATE |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| <img width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" /> | WEB APP TEMPLATE |
+| ------------------------------------------------------------------------------------------------------------- | ---------------- |
 
 ![main GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sripwoud/ts-template/main.yaml?branch=main&label=main)
 [![Coverage Status](https://coveralls.io/repos/github/r1oga/ts-template/badge.svg?branch=main)](https://coveralls.io/github/r1oga/ts-template?branch=main)
@@ -7,6 +7,7 @@
 
 | Feature                                        | With                                                                  | Configuration File                                                                                                    |
 | ---------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Build tool                                     | [Vite](https://vite.dev/)                                             | [vite.config.ts](./web/vite.config.ts)                                                                                |
 | Runtime, tests runner                          | [Bun](https://bun.sh)                                                 | [bunfig.toml](./bunfig.toml)                                                                                          |
 | Tasks runner, environment & runtime management | [mise](https://mise.dev/)                                             | [mise.toml](./mise.toml)                                                                                              |
 | Typings                                        | [Typescript](https://www.typescriptlang.org/)                         | [tsconfig.json](./tsconfig.json)                                                                                      |

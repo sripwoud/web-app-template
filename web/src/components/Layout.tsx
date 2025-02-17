@@ -10,7 +10,7 @@ export function Layout() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '98vh',
+        minHeight: '100vh',
       }}
     >
       <Header />

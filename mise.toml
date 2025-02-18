@@ -22,4 +22,5 @@ quiet = true
 [tools]
 bun = "latest"
 "cargo:convco" = "latest"
-lefthook = "latest"
+hk = "latest"
+pkl = "latest"

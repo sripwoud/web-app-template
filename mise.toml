@@ -22,5 +22,9 @@ quiet = true
 [tools]
 bun = "latest"
 "cargo:convco" = "latest"
+dprint = "latest"
 hk = "latest"
 pkl = "latest"
+"npm:@biomejs/biome" = "latest"
+"npm:tsc-files" = "latest"
+"npm:typescript" = "latest"

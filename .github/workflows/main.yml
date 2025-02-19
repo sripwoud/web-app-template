@@ -10,18 +10,23 @@ on:
 # no need to bother caching bun deps
 # https://github.com/oven-sh/setup-bun/issues/14#issuecomment-1714116221
 jobs:
-  validate:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - name: Validate
-        run: |
-          bun concurrently \
-            -c auto \
-            -n format,lint,typecheck,build \
-            'bun dprint check' \
-            'bun biome check --config-path=.biome.jsonc .' \
-            'cd web &&bun tsc --p tsconfig.app.json --noEmit' \
-            'cd web && bun vite build'
+      - uses: jdx/mise-action@v2
+        with:
+          mise_toml: |
+            [tasks]
+            "check:build" = { dir= "web", run = "bun vite build"}
+            "check:format" = { run = "dprint check --excludes mise.toml" }
+            "check:lint" = { run = "biome check --config-path=.biome.jsonc" }
+            "check:types" = { run = "tsc -p web/tsconfig.app.json" }
+            "check" = { depends = "check:*" }
+            [tools]
+            bun = "latest"
+            dprint = "latest"
+            "npm:@biomejs/biome" = "latest"
+            "npm:typescript" = "latest"
+      - run: bun i
+      - run: mise r check

@@ -8,8 +8,6 @@ const plugins = [react(), tailwindcss(), TanStackRouterVite(), tsconfigPaths()]
 
 export default defineConfig(({ mode }) => {
   return {
-    // https://vite.dev/guide/static-deploy#github-pages
-    base: '/web-app-template/',
     plugins,
     server: { open: mode === 'development' },
   }

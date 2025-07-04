@@ -3,7 +3,6 @@
 set -eu
 
 ORANGE="\033[33m"
-RED="\033[31m"
 RESET="\033[0m"
 
 log() {
@@ -12,7 +11,6 @@ log() {
 
 install_mise() {
   curl https://mise.run | sh
-  mise activate
   echo "✅ Installed ${ORANGE}mise$RESET"
 }
 
@@ -58,10 +56,12 @@ EOF
 
 main() {
   maybe_install_mise
-  mise install >/dev/null 2>&1 && log "✅ Installed dev tools and runtimes"
+  mise install && log "✅ Installed dev tools and runtimes"
   use_convco_as_git_editor_only_on_main
-  hk install >/dev/null && log "✅ Configured git hooks"
-  bun i >/dev/null && log "✅ Installed node deps"
+  hk install && log "✅ Configured git hooks"
+  bun i && log "✅ Installed node deps"
+  log "🎉 Setup complete "
+  log "To see available tasks: ${ORANGE}mise run$RESET"
 }
 
 main

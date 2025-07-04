@@ -1,16 +1,24 @@
-//amends "https://hk.jdx.dev/v0/hk.pkl"
-amends "https://raw.githubusercontent.com/jdx/hk/51c981c9d4ce72b02f4dd5beda545136858ca9f2/pkl/hk.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.1.0/hk@1.1.0#/Config.pkl"
 
-min_hk_version = "0.2.3"
-
-`pre-commit` {
-  ["format"] {
-    fix_all = "dprint fmt"
+local linters  = new Mapping<String, Step> {
+  ["fmt"]  {
+    fix = "dprint fmt"
+    stage = "*"
   }
   ["lint"] {
     check = "biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
   }
   ["typecheck"] {
-    check_all = "tsc -p web/tsconfig.app.json"
+    check = "tsc -p web/tsconfig.app.json"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps {
+      ...linters
+    }
   }
 }

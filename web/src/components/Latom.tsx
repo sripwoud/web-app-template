@@ -5,13 +5,13 @@ export const Latom = () => {
 
   return latom.mapOrElseSync(
     () => (
-      <button type='button' onClick={() => set('some value')}>
+      <button onClick={() => set('some value')} type='button'>
         Set
       </button>
     ),
     (value) => (
       <div className='flex items-center gap-2'>
-        <button type='button' onClick={reset}>
+        <button onClick={reset} type='button'>
           Reset
         </button>
         <span>{value}</span>

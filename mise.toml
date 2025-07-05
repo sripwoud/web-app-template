@@ -1,3 +1,8 @@
+[tasks.biome-fix]
+alias = "bf"
+description = "Apply biome safe fixes"
+run = "biome check --fix --config-path=.biome.jsonc"
+
 [tasks.build]
 alias = "b"
 description = "Build the project"

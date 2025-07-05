@@ -24,34 +24,34 @@ export function UsernameForm() {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <form.Field
-        name='username'
         children={(field) => (
           <>
             <label htmlFor={field.name} style={{ marginRight: '4px' }}>
               {capitalize(field.name)}
             </label>
             <input
-              onChange={(e) => field.handleChange(e.target.value)}
               id={field.name}
               name={field.name}
-              type='text'
+              onChange={(e) => field.handleChange(e.target.value)}
               placeholder={field.name}
-              value={field.state.value}
               style={{ marginRight: '4px' }}
+              type='text'
+              value={field.state.value}
             />
             <br />
             <FieldInfo field={field} />
             <br />
           </>
         )}
+        name='username'
       />
       <form.Subscribe
-        selector={({ canSubmit, isSubmitting }) => [canSubmit, isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
-          <button type='submit' aria-busy={isSubmitting} disabled={!canSubmit}>
+          <button aria-busy={isSubmitting} disabled={!canSubmit} type='submit'>
             Submit
           </button>
         )}
+        selector={({ canSubmit, isSubmitting }) => [canSubmit, isSubmitting]}
       />
     </form>
   )

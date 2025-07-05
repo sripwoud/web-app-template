@@ -46,12 +46,11 @@ export function UsernameForm() {
         name='username'
       />
       <form.Subscribe
-        children={([canSubmit, isSubmitting]) => (
+        children={({ canSubmit, isSubmitting }) => (
           <button aria-busy={isSubmitting} disabled={!canSubmit} type='submit'>
             Submit
           </button>
         )}
-        selector={({ canSubmit, isSubmitting }) => [canSubmit, isSubmitting]}
       />
     </form>
   )

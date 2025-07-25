@@ -1,7 +1,7 @@
 {
   "excludes": ["web/src/routeTree.gen.ts"],
   "extends": [
-    "https://raw.githubusercontent.com/sripwoud/configs/main/packages/dprint/.dprint.ts.jsonc",
+    "https://raw.githubusercontent.com/sripwoud/ts-template/main/.dprint.jsonc",
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.19.4.wasm",

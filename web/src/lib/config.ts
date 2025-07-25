@@ -1,7 +1,7 @@
 interface Config {
-  appName: string
+  appName: string;
 }
 
 export const config: Config = {
-  appName: 'web-app-template',
-}
+  appName: "web-app-template",
+};

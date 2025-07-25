@@ -1,0 +1,6 @@
+*
+!.github/workflows/semantic-pr.yml
+!.convco
+!hk.pkl
+!LICENSE
+!setup

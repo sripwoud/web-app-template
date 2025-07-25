@@ -13,16 +13,12 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**", "!**/dist", "!**/web/src/routeTree.gen.ts"],
+    "includes": ["**", "!**/dist"],
     "rules": {
+      "recommended": true,
       "complexity": {
         "useLiteralKeys": "off",
       },
-      "correctness": {
-        // @tanstack/form form fields use children prop
-        "noChildrenProp": "off",
-      },
-      "recommended": true,
       "style": {
         "noParameterAssign": "error",
         "useAsConstAssertion": "error",
@@ -38,9 +34,7 @@
     },
   },
   // organize imports with dprint
-  "assist": {
-    "actions": { "source": { "organizeImports": "off", "useSortedAttributes": "on", "useSortedProperties": "on" } },
-  },
+  "assist": { "actions": { "source": { "organizeImports": "off" } } },
   "vcs": {
     "enabled": true,
     "clientKind": "git",

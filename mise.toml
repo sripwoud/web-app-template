@@ -1,34 +1,29 @@
-[tasks.biome-fix]
-alias = "bf"
-description = "Apply biome safe fixes"
-run = "biome check --fix --config-path=.biome.jsonc"
-
 [tasks.build]
 alias = "b"
 description = "Build the project"
-dir = "web"
-run = ["bun tsc -b", "bun vite build"]
-quiet = true
+run = "bun build src --outdir dist --sourcemap=inline --target=bun"
 
 [tasks.dev]
 alias = "d"
-description = "Start the dev server"
-dir = "web"
-run = "bun vite"
-quiet = true
+description = "Run the project in dev mode"
+run = "bun --watch --hot src/index.ts"
 
-[tasks.preview]
-alias = "p"
-description = "Preview the app"
-dir = "web"
-run = "bun vite preview"
-quiet = true
+[tasks.test]
+alias = "t"
+description = "Run the project tests"
+run = "bun test --coverage"
+
+[tasks.test-watch]
+alias = "tw"
+description = "Run the project tests in watch mode"
+run = "bun test --watch"
 
 [tools]
 bun = "latest"
 "cargo:convco" = "latest"
 dprint = "latest"
 hk = "latest"
-pkl = "latest"
 "npm:@biomejs/biome" = "latest"
+"npm:tsc-files" = "latest"
 "npm:typescript" = "latest"
+pkl = "latest"

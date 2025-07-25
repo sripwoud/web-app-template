@@ -12,11 +12,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          token: ${{ secrets.GH_PAT }}
       - uses: AndreasAugustin/actions-template-sync@v2
         with:
           pr_title: "chore: upstream merge template repository"
-          target_gh_token: ${{ secrets.GH_PAT }}
-          source_repo_path: sripwoud/ts-template
+          source_repo_path: sripwoud/agnostic-template

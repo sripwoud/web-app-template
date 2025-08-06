@@ -3,5 +3,5 @@ interface Config {
 }
 
 export const config: Config = {
-  appName: "web-app-template",
+  appName: import.meta.env.VITE_APP_NAME || "web-app-template",
 };

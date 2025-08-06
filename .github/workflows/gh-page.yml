@@ -25,6 +25,8 @@ jobs:
       - name: Install
         run: bun install
       - name: Build
+        env:
+          CI: true
         working-directory: web
         run: bun vite build
         # GH Pages does not support SPA routing, by copying index.html to 404.html, we fallback to our app for all routes

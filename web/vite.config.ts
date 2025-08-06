@@ -1,13 +1,14 @@
 import tailwindcss from "@tailwindcss/vite";
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const plugins = [react(), tailwindcss(), TanStackRouterVite(), tsconfigPaths()];
+const plugins = [tanstackRouter(), react(), tailwindcss(), tsconfigPaths()];
 
 export default defineConfig(({ mode }) => {
   return {
+    base: process.env.CI ? "/web-app-template/" : "/",
     plugins,
     server: { open: mode === "development" },
   };

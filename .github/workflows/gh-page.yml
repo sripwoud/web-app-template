@@ -22,10 +22,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun vite build
+      - name: Install
+        run: bun install
+      - name: Build
         working-directory: web
+        run: bun vite build
+        # GH Pages does not support SPA routing, by copying index.html to 404.html, we fallback to our app for all routes
+        # https://github.com/rafgraph/spa-github-pages
+      - name: Setup 404 Fallback
+        run: cp ./web/dist/index.html ./web/dist/404.html
       - uses: actions/configure-pages@v4
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: "./web/dist"

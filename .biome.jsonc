@@ -1,6 +1,7 @@
 {
   "root": false,
   "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "files": { "includes": ["**", "!**/routeTree.gen.ts"] },
   // format with dprint
   "formatter": {
     "enabled": false,
@@ -13,7 +14,6 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**", "!**/dist", "!**/web/src/routeTree.gen.ts"],
     "rules": {
       "complexity": {
         "useLiteralKeys": "off",

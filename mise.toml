@@ -4,7 +4,7 @@ VITE_APP_NAME = "web-app-template"
 [tasks.biome-fix]
 alias = "bf"
 description = "Apply biome safe fixes"
-run = "biome check --fix --config-path=.biome.jsonc"
+run = "biome check --config-path=biome.jsonc --fix --no-errors-on-unmatched"
 
 [tasks.build]
 alias = "b"

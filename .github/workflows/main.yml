@@ -20,7 +20,7 @@ jobs:
             [tasks]
             "check:build" = { dir= "web", run = "bun vite build"}
             "check:format" = { run = "dprint check --excludes mise.toml" }
-            "check:lint" = { run = "biome check --config-path=.biome.jsonc" }
+            "check:lint" = { run = "biome check --config-path=biome.jsonc --no-errors-on-unmatched" }
             "check:types" = { run = "tsc -p web/tsconfig.app.json" }
             "check" = { depends = "check:*" }
             [tools]

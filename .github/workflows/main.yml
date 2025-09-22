@@ -9,6 +9,8 @@ on:
 
 # no need to bother caching bun deps
 # https://github.com/oven-sh/setup-bun/issues/14#issuecomment-1714116221
+permissions:
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest

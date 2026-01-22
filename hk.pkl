@@ -11,6 +11,7 @@ local linters  = new Mapping<String, Step> {
   }
   ["typescript"]  {
     check = "tsc -p web/tsconfig.app.json"
+    glob = List("*.js", "*.jsx", "*.ts", "*.tsx")
   }
 }
 

@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
@@ -11,33 +11,40 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build
+        working-directory: web
+        run: bun tsc -b && bun vite build
+
+      - name: Setup 404 Fallback
+        run: cp ./web/dist/index.html ./web/dist/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./web/dist"
+
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - name: Install
-        run: bun install
-      - name: Build
-        env:
-          CI: true
-        working-directory: web
-        run: bun vite build
-        # GH Pages does not support SPA routing, by copying index.html to 404.html, we fallback to our app for all routes
-        # https://github.com/rafgraph/spa-github-pages
-      - name: Setup 404 Fallback
-        run: cp ./web/dist/index.html ./web/dist/404.html
-      - uses: actions/configure-pages@v4
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./web/dist"
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4

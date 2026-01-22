@@ -8,109 +8,109 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as QueryRouteImport } from "./routes/query";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as QueryRouteImport } from './routes/query'
 
-const StateLazyRouteImport = createFileRoute("/state")();
-const FormLazyRouteImport = createFileRoute("/form")();
-const IndexLazyRouteImport = createFileRoute("/")();
+const StateLazyRouteImport = createFileRoute('/state')()
+const FormLazyRouteImport = createFileRoute('/form')()
+const IndexLazyRouteImport = createFileRoute('/')()
 
 const StateLazyRoute = StateLazyRouteImport.update({
-	id: "/state",
-	path: "/state",
-	getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import("./routes/state.lazy").then((d) => d.Route));
+  id: '/state',
+  path: '/state',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/state.lazy').then((d) => d.Route))
 const FormLazyRoute = FormLazyRouteImport.update({
-	id: "/form",
-	path: "/form",
-	getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import("./routes/form.lazy").then((d) => d.Route));
+  id: '/form',
+  path: '/form',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/form.lazy').then((d) => d.Route))
 const QueryRoute = QueryRouteImport.update({
-	id: "/query",
-	path: "/query",
-	getParentRoute: () => rootRouteImport,
-} as any);
+  id: '/query',
+  path: '/query',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexLazyRoute = IndexLazyRouteImport.update({
-	id: "/",
-	path: "/",
-	getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import("./routes/index.lazy").then((d) => d.Route));
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
-	"/": typeof IndexLazyRoute;
-	"/query": typeof QueryRoute;
-	"/form": typeof FormLazyRoute;
-	"/state": typeof StateLazyRoute;
+  '/': typeof IndexLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 export interface FileRoutesByTo {
-	"/": typeof IndexLazyRoute;
-	"/query": typeof QueryRoute;
-	"/form": typeof FormLazyRoute;
-	"/state": typeof StateLazyRoute;
+  '/': typeof IndexLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 export interface FileRoutesById {
-	__root__: typeof rootRouteImport;
-	"/": typeof IndexLazyRoute;
-	"/query": typeof QueryRoute;
-	"/form": typeof FormLazyRoute;
-	"/state": typeof StateLazyRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexLazyRoute
+  '/query': typeof QueryRoute
+  '/form': typeof FormLazyRoute
+  '/state': typeof StateLazyRoute
 }
 export interface FileRouteTypes {
-	fileRoutesByFullPath: FileRoutesByFullPath;
-	fullPaths: "/" | "/query" | "/form" | "/state";
-	fileRoutesByTo: FileRoutesByTo;
-	to: "/" | "/query" | "/form" | "/state";
-	id: "__root__" | "/" | "/query" | "/form" | "/state";
-	fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/query' | '/form' | '/state'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/query' | '/form' | '/state'
+  id: '__root__' | '/' | '/query' | '/form' | '/state'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-	IndexLazyRoute: typeof IndexLazyRoute;
-	QueryRoute: typeof QueryRoute;
-	FormLazyRoute: typeof FormLazyRoute;
-	StateLazyRoute: typeof StateLazyRoute;
+  IndexLazyRoute: typeof IndexLazyRoute
+  QueryRoute: typeof QueryRoute
+  FormLazyRoute: typeof FormLazyRoute
+  StateLazyRoute: typeof StateLazyRoute
 }
 
-declare module "@tanstack/react-router" {
-	interface FileRoutesByPath {
-		"/state": {
-			id: "/state";
-			path: "/state";
-			fullPath: "/state";
-			preLoaderRoute: typeof StateLazyRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-		"/form": {
-			id: "/form";
-			path: "/form";
-			fullPath: "/form";
-			preLoaderRoute: typeof FormLazyRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-		"/query": {
-			id: "/query";
-			path: "/query";
-			fullPath: "/query";
-			preLoaderRoute: typeof QueryRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-		"/": {
-			id: "/";
-			path: "/";
-			fullPath: "/";
-			preLoaderRoute: typeof IndexLazyRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-	}
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/state': {
+      id: '/state'
+      path: '/state'
+      fullPath: '/state'
+      preLoaderRoute: typeof StateLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/form': {
+      id: '/form'
+      path: '/form'
+      fullPath: '/form'
+      preLoaderRoute: typeof FormLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/query': {
+      id: '/query'
+      path: '/query'
+      fullPath: '/query'
+      preLoaderRoute: typeof QueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-	IndexLazyRoute: IndexLazyRoute,
-	QueryRoute: QueryRoute,
-	FormLazyRoute: FormLazyRoute,
-	StateLazyRoute: StateLazyRoute,
-};
+  IndexLazyRoute: IndexLazyRoute,
+  QueryRoute: QueryRoute,
+  FormLazyRoute: FormLazyRoute,
+  StateLazyRoute: StateLazyRoute,
+}
 export const routeTree = rootRouteImport
-	._addFileChildren(rootRouteChildren)
-	._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()

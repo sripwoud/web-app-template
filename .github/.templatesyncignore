@@ -2,4 +2,6 @@
 !.convco
 !LICENSE
 !setup
+!.github/
+!.github/workflows/
 !.github/workflows/semantic-pr.yml
